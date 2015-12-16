@@ -295,6 +295,7 @@ class Product extends Page implements Buyable {
 			//TODO: make this a bit safer, perhaps intersect with allowed fields
 			$item->update($filter);
 		}
+		$item->Weight = $this->Weight;
 		$item->Quantity = $quantity;
 		return $item;
 	}
