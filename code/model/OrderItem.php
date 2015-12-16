@@ -11,7 +11,8 @@ class OrderItem extends OrderAttribute {
 
 	private static $db = array(
 		'Quantity' => 'Int',
-		'UnitPrice' => 'Currency'
+		'UnitPrice' => 'Currency',
+		'Weight' => 'Float'
 	);
 
 	private static $casting = array(
