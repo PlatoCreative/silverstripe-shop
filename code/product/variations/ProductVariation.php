@@ -14,7 +14,8 @@ class ProductVariation extends DataObject implements Buyable {
 
 	private static $db = array(
 		'InternalItemID' => 'Varchar(30)',
-		'Price' => 'Currency'
+		'Price' => 'Currency',
+		'Weight' => 'Float'
 	);
 
 	private static $has_one = array(
@@ -199,6 +200,10 @@ class ProductVariation extends DataObject implements Buyable {
 			//TODO: make this a bit safer, perhaps intersect with allowed fields
 			$item->update($filter);
 		}
+		
+		// if weight is set for variation use this otherwise use product weight
+		$item->Weight = $this->Weight != 0 ? $this->Weight : $this->Product()->Weight;
+		
 		$item->Quantity = $quantity;
 		return $item;
 	}
